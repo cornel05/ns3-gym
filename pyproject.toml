@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wireless-qtable"
+version = "0.1.0"
+description = "Tabular Q-learning baseline for ns3-gym cognitive radio channel selection"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "pyyaml",
+  "tqdm",
+]
+
+[tool.uv]
+package = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/wireless_qtable"]
