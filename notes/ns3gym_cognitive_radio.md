@@ -4,7 +4,7 @@
 - **State**: channel occupation state in current time slot (discretized tuple).
 - **Action**: channel selection for the next time slot.
 - **Reward**: +1 no collision, -1 collision.
-- **Done/Gameover**: more than 3 collisions in the last 10 time-slots.
+- **Done/Gameover**: more than 3 collisions in the last 10 time slots.
 
 ## Why tabular Q-learning is feasible
 For small channel counts and occupancy vectors, state/action spaces stay compact enough for a Q-table and provide a clear baseline before deep RL.

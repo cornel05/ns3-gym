@@ -36,7 +36,7 @@ python -m pip install -e .
 
 ## Run training
 ```bash
-python -m wireless_qtable.train --config /home/runner/work/ns3-gym/ns3-gym/configs/qlearning.yaml
+python -m wireless_qtable.train --config configs/qlearning.yaml
 ```
 
 Use `scripts/run_cognitive_radio.sh` as a placeholder reminder for running the ns-3 cognitive radio scenario from your ns-3 tree.
