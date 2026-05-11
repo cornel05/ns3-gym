@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, Tuple
 
 import numpy as np
 
 
-State = Tuple[int, ...]
+State = tuple[int, ...]
 
 
 class QTableAgent:
@@ -25,7 +24,7 @@ class QTableAgent:
         self.epsilon = epsilon_start
         self.epsilon_min = epsilon_min
         self.epsilon_decay = epsilon_decay
-        self.q_table: Dict[State, np.ndarray] = {}
+        self.q_table: dict[State, np.ndarray] = {}
 
     def _ensure_state(self, state: State) -> np.ndarray:
         if state not in self.q_table:
@@ -61,4 +60,6 @@ class QTableAgent:
 
     def load(self, path: str | Path) -> None:
         loaded = np.load(Path(path), allow_pickle=True).item()
+        if not isinstance(loaded, dict):
+            raise ValueError("Loaded Q-table is invalid: expected dictionary mapping states to q-values.")
         self.q_table = {tuple(k): np.asarray(v, dtype=float) for k, v in loaded.items()}
