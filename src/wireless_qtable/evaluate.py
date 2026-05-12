@@ -11,7 +11,7 @@ from .utils import load_config
 def evaluate(config_path: str) -> None:
     config = load_config(config_path)
 
-    env = make_env()
+    env = make_env(config)
     agent = QTableAgent(
         n_actions=int(env.action_space.n),
         alpha=float(config["alpha"]),

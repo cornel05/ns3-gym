@@ -7,3 +7,12 @@ epsilon_decay: 0.995
 max_steps_per_episode: 200
 q_table_path: "artifacts/q_table.npy"
 seed: 42
+env:
+  scenario_dir: ns-allinone-3.40/ns-3.40/contrib/opengym/examples/interference-pattern
+  step_time: 0.1
+  port: 0
+  start_sim: true
+  debug: false
+  sim_args:
+    --simTime: 10
+    --testArg: 0

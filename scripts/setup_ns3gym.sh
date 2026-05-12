@@ -43,7 +43,13 @@ echo "[5/6] Configure and build ns-3"
 
 echo "[6/6] Install ns3gym Python package"
 cd contrib/opengym/model/ns3gym
-python3 -m pip install -U pip
-python3 -m pip install .
+
+if [[ ! -f ns3gym/messages_pb2.py ]]; then
+  echo "Missing generated protobuf file: contrib/opengym/model/ns3gym/ns3gym/messages_pb2.py"
+  echo "Run ./ns3 configure && ./ns3 build first, then retry this install step."
+  exit 1
+fi
+
+python -m pip install -e .
 
 echo "Done. Verify ns3gym import in your Python environment before training."

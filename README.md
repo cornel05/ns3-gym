@@ -22,6 +22,9 @@ The Cognitive Radio example often exposes low-dimensional, discrete-like observa
 4. Build ns-3 and install the ns3gym Python package.
 5. Use this repo for tabular Q-learning training/evaluation.
 
+Run training from this repo's root Python environment (`.venv`), not the nested
+`ns-allinone-3.40/ns-3.40/.venv`.
+
 See `scripts/setup_ns3gym.sh` for a documented setup template.
 
 ## Install Python dependencies
@@ -31,6 +34,13 @@ uv sync
 
 Or with pip:
 ```bash
+python -m pip install -e .
+```
+
+If `ns3gym` is missing, install it into the same interpreter after `./ns3 configure`
+and `./ns3 build` have generated `contrib/opengym/model/ns3gym/ns3gym/messages_pb2.py`:
+```bash
+cd ns-allinone-3.40/ns-3.40/contrib/opengym/model/ns3gym
 python -m pip install -e .
 ```
 
