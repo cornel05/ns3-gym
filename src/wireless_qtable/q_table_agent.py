@@ -12,14 +12,14 @@ class QTableAgent:
     def __init__(
         self,
         n_actions: int,
-        alpha: float,
+        lr: float,
         gamma: float,
         epsilon_start: float,
         epsilon_min: float,
         epsilon_decay: float,
     ) -> None:
         self.n_actions = n_actions
-        self.alpha = alpha
+        self.lr = lr
         self.gamma = gamma
         self.epsilon = epsilon_start
         self.epsilon_min = epsilon_min
@@ -48,7 +48,7 @@ class QTableAgent:
         current_q = self._ensure_state(state)
         next_q = self._ensure_state(next_state)
         target = reward if done else reward + self.gamma * float(np.max(next_q))
-        current_q[action] += self.alpha * (target - current_q[action])
+        current_q[action] += self.lr * (target - current_q[action])
 
     def decay_epsilon(self) -> None:
         self.epsilon = max(self.epsilon_min, self.epsilon * self.epsilon_decay)
